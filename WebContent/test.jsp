@@ -36,6 +36,6 @@
 			<input type="button" value="提交" /></td>
 		</tr>
 	</table>	
-</body>
-
+	</body>
+    
 </html>

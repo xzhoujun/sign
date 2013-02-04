@@ -74,7 +74,7 @@ function BtHide(id) {
 
 	function SignShow(sign_user) {
 		
-		$("body").append("<div id='sign_box' style='display: none; z-index: 999; text-align: center; background: #FFF; padding: 20px; border: 5px solid #95B8E7;'><input type='hidden'   name='sign_user' id='sign_user'/>	请输入签名密码：<input type='password' name='sign_pwd'  id='sign_pwd' maxlength='18' /> <input type='button' value='确定' onclick='sign_submit()'/> <input type='button' value='取消' onclick='SignHide()' />	<div id='sign_mes' style='padding-top: 10px;font: red;'></div></div>");
+		$("body").append("<div id='sign_box' style='display: none; z-index: 999; text-align: center; background: #FFF; padding: 20px; border: 5px solid #95B8E7;'><input type='hidden'   name='sign_user' id='sign_user'/>	请输入签名密码：<input type='password' name='sign_pwd'  id='sign_pwd' maxlength='18' /> <input type='button' value='确定' onclick='sign_submit_base64()'/> <input type='button' value='取消' onclick='SignHide()' />	<div id='sign_mes' style='padding-top: 10px;font: red;'></div></div>");
 		
 		$('#sign_user').val(sign_user);		
 		BtPopload("sign_box");
@@ -98,6 +98,32 @@ function BtHide(id) {
 					   function(data){
 					     if(data.success=='1'){					    	 
 					    	 $('#sign_img').html(data.sign_img);
+					    	
+					    	 SignHide();
+					     }else{
+					    	 $('#sign_mes').html(data.message);
+					     }
+						});
+		}else{
+			$('#sign_mes').html('密码不能为空，请重新输入！');
+			return false;
+		}
+	}
+	
+	// 提交服务端验证
+	function sign_submit_base64(url){		
+		$('#sign_mes').html('');
+		if(!$('#sign_user').val()){
+			$('#sign_mes').html('签名用户为空，请检查！');
+			return false;
+		}
+		
+		if($('#sign_pwd').val()){
+			$.post("UserSign!signBase64.action", {sign_user: $('#sign_user').val(), sign_pwd: $('#sign_pwd').val()},
+					   function(data){
+					     if(data.success=='1'){					    	 
+					    	 $('#sign_img').html(data.sign_img);
+					    	
 					    	 SignHide();
 					     }else{
 					    	 $('#sign_mes').html(data.message);
