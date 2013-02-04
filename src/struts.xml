@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />	
+	<constant name="struts.custom.i18n.resources"
+		value="language.ApplicationResources_en_US,language.ApplicationResources_zh_CN"></constant>
+    <constant name="struts.convention.default.parent.package" value="default" />
+	<constant name="struts.convention.package.locators"
+		value="action" />
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<default-action-ref name="index" />
+
+		
+
+		<action name="UserSign" class="com.chinasofti.demo.users.action.UserSign"></action>
+	</package>
+
+
+	<!-- Add packages here -->
+
+</struts>
