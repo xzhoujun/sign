@@ -23,7 +23,7 @@ public class SignServiceImpl implements SignService {
 	}
 	
 	/**
-	 * 从文件目录或数据库，返回签名图像,采用png格式
+	 * 从文件目录或数据库，返回签名图像,采用png格式,大小32k以内
 	 * @param sign_user
 	 * @param sign_pwd
 	 * @return

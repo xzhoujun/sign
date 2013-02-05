@@ -1,4 +1,4 @@
-function BtHide(id) {
+	function BtHide(id) {
 		var Div = document.getElementById(id);
 		if (Div) {
 			Div.style.display = "none"

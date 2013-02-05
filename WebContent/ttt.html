@@ -1,0 +1,86 @@
+<!--
+Content-Type: multipart/related; boundary="[MHTML_EMBED_CODE]"
+ 
+--[MHTML_EMBED_CODE]
+Content-Type: image/png
+Content-Location: img1
+Content-Transfer-Encoding: base64
+ 
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/
+//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U
+g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC
+ 
+--[MHTML_EMBED_CODE]
+Content-Type: image/png
+Content-Location: img2
+Content-Transfer-Encoding: base64
+ 
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/
+//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U
+g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC
+ 
+--[MHTML_EMBED_CODE]
+Content-Type: image/png
+Content-Location: img3
+Content-Transfer-Encoding: base64
+ 
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/
+//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U
+g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC
+ 
+--[MHTML_EMBED_CODE]
+-->
+ 
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=GB2312">
+</head>
+<body>
+ 
+ 
+<img id="img1" src="*" />
+<img id="img2" src="*" />
+<img id="img3" src="*" />
+---
+<img id="img4" src="mhtml:"+document.location.href+"!img3" />
+ <img id="img5" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAABlBMVEUAAAD/
+//+l2Z/dAAAAM0lEQVR4nGP4/5/h/1+G/58ZDrAz3D/McH8yw83NDDeNGe4U
+g9C9zwz3gVLMDA/A6P9/AFGGFyjOXZtQAAAAAElFTkSuQmCC" />
+ 
+<script type="text/javascript">
+function getEmbedImageSrc(locationCode){
+     //for ie6¡¢ie7
+     if(document.all&&navigator.userAgent.indexOf("MSIE 8.0")==-1){
+             return 'mhtml:'+document.location+'!'+locationCode;
+     }
+      
+     //for ie8¡¢FireFox ¡¢Opera
+     var codeReg=new RegExp(
+                  "--\\[MHTML_EMBED_CODE\\]\\n+"
+                  +"[^\\[]*?"
+                  +"Content-Location:\\s*"+locationCode+"\\s*\\n"
+                  +"[^\\[]*?"   
+                  +"(?=\\n+--\\[MHTML_EMBED_CODE\\])"
+             );
+      
+     var codePart=document.documentElement.innerHTML.match(codeReg)[0];     
+     
+     codePart.match(/Content-Type:\s*(.*?)\n/)
+     var imageType=RegExp.$1;     
+ 
+     codePart.match(/\n{2,}([\S\s]+?)$/i);            
+     var imageCode=RegExp.$1;     
+          
+     return "data:"+imageType+";base64,"+imageCode;
+}   
+     
+var img1=document.getElementById("img1"),
+        img2=document.getElementById("img2"),
+        img3=document.getElementById("img3");
+             
+//img1.src=getEmbedImageSrc('img1');
+//img2.src=getEmbedImageSrc('img2');
+//img3.src=getEmbedImageSrc('img3');
+</script>
+</body>
+</html>

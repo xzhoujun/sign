@@ -6,8 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="js/sign.js"></script>
-
+<script type="text/javascript" src="js/jquery_sign.js"></script>
+<script>
+$(document).ready(function(){	
+	//使用签名时，只需调用SignShow方法，并传入签名的用户名    [sign_img为定义签名显示的位置]
+	$('#button_sign').click( function () { $(this).sign('SignShow', 'admin');});	
+});
+</script>
 <body bgcolor="#efefef">
 	<table align="center" style="">
 		<tr>
@@ -30,9 +35,8 @@
 			<td colspan="2"><div id="sign_img"></div></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-			<!-- 使用签名时，只需调用SignShow方法，并传入签名的用户名   sign_img为定义签名显示的位置-->
-			<input type="button" value="签名" onclick="SignShow('admin')" /> 
+			<td colspan="2">			
+			<input type="button" value="签名" id="button_sign"/> 
 			<input type="button" value="提交" /></td>
 		</tr>
 	</table>	
