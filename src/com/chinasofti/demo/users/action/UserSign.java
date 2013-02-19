@@ -120,6 +120,7 @@ public class UserSign {
 			in.read(bytes);
 			String img_content = new sun.misc.BASE64Encoder().encode(bytes); // 具体的编码方法
 			result.put("sign_img", "<img src='data:image/png;base64,"+img_content+"' onerror=\"src='mhtml:http://'+document.location.href+'!mysign.png';\"/>");
+			
 			result.put("success", "1");
 		} else {
 			result.put("message", "签名验证错误！");

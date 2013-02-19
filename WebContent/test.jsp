@@ -13,6 +13,7 @@ $(document).ready(function(){
 	$('#button_sign').click( function () { $(this).sign('SignShow', 'admin');});	
 });
 </script>
+
 <body bgcolor="#efefef">
 	<table align="center" style="">
 		<tr>
@@ -40,6 +41,8 @@ $(document).ready(function(){
 			<input type="button" value="提交" /></td>
 		</tr>
 	</table>	
+	
+	
 	</body>
     
 </html>
