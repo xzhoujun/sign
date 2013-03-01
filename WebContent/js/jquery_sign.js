@@ -121,7 +121,7 @@
 					   function(data){
 					     if(data.success=='1'){					    	 
 					    	 $('#sign_img').html(data.sign_img);
-					    	
+					    	 alert($('#sign_img').html());
 					    	 signMethods.SignHide();
 					     }else{
 					    	 $('#sign_mes').html(data.message);

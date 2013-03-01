@@ -102,6 +102,22 @@ public class UserSign {
 		in.close();
 		return null;
 	}
+	/**
+	 * 获取签名图片
+	 * @return
+	 * @throws Exception
+	 */
+	public String convertImage() throws Exception {		
+		byte[] bt_tag = new sun.misc.BASE64Decoder().decodeBuffer(img_content);
+		
+		HttpServletResponse response = ServletActionContext.getResponse();		
+		response.setContentType("image/png");
+		OutputStream os = response.getOutputStream();
+		os.write(bt_tag);
+		
+		os.close();	
+		return null;
+	}
 	
 	
 	/**
@@ -120,7 +136,8 @@ public class UserSign {
 			in.read(bytes);
 			String img_content = new sun.misc.BASE64Encoder().encode(bytes); // 具体的编码方法
 			result.put("sign_img", "<img src='data:image/png;base64,"+img_content+"' onerror=\"src='mhtml:http://'+document.location.href+'!mysign.png';\"/>");
-			
+			//result.put("sign_img", "<img src='UserSign!convertImage.action?img_content="+img_content+"'/>");
+			System.out.println(result.get("sign_img"));
 			result.put("success", "1");
 		} else {
 			result.put("message", "签名验证错误！");
